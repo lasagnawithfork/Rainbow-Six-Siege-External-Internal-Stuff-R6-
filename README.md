@@ -32,6 +32,66 @@ Search R6TextChatManager -> XREF IT ->  jump to addy sub_blabla_
 **v26 ^ v27 = game manager it's always added or 3xb something similar  the letter in the middle can change over patches or seasons.
 
 
+## HOW TO FIND  WEAPON COMPONENT & WEAPON STATE 
+
+Open ida with your game build.
+Binary Search ->  given pattern -> 
+
+Some random old thing I found that's interesting
+
+```txt
+enum class WeaponState : uint32_t
+{
+ WeaponState_InActive = 0x0,
+ WeaponState_Idle = 0x1,
+ WeaponState_Reload = 0x2,
+ WeaponState_Fire = 0x3,
+ WeaponState_Equip = 0x4,
+ WeaponState_UnEquip = 0x5,
+ WeaponState_PostShoot = 0x9,
+ WeaponState_EquipSettle = 0xA,
+ WeaponState_Gadget = 0xB,
+ WeaponState_Addon = 0xC,
+ WeaponState_ToggleWeaponGadget = 0xD,
+ WeaponState_EquipWeaponGadget = 0xE,
+ WeaponState_UnequipWeaponGadget = 0xF,
+ WeaponState_CycleWeaponAmmoType = 0x10,
+ WeaponState_CycleWeaponFireMode = 0x11,
+ WeaponState_SelfUse = 0x12,
+ WeaponState_ToggleFlashlight = 0x13,
+ Value_17 = 0x14,
+ Value_18 = 0x15,
+ Value_19 = 0x16,
+ Value_20 = 0x17,
+ Value_21 = 0x18
+};
+
+static const uint32_t kWeaponStateValues[] = {
+ (uint32_t)WeaponState::WeaponState_InActive,
+ (uint32_t)WeaponState::WeaponState_Idle,
+ (uint32_t)WeaponState::WeaponState_Reload,
+ (uint32_t)WeaponState::WeaponState_Fire,
+ (uint32_t)WeaponState::WeaponState_Equip,
+ (uint32_t)WeaponState::WeaponState_UnEquip,
+ (uint32_t)WeaponState::WeaponState_PostShoot,
+ (uint32_t)WeaponState::WeaponState_EquipSettle,
+ (uint32_t)WeaponState::WeaponState_Gadget,
+ (uint32_t)WeaponState::WeaponState_Addon,
+ (uint32_t)WeaponState::WeaponState_ToggleWeaponGadget,
+ (uint32_t)WeaponState::WeaponState_EquipWeaponGadget,
+ (uint32_t)WeaponState::WeaponState_UnequipWeaponGadget,
+ (uint32_t)WeaponState::WeaponState_CycleWeaponAmmoType,
+ (uint32_t)WeaponState::WeaponState_CycleWeaponFireMode,
+ (uint32_t)WeaponState::WeaponState_SelfUse,
+ (uint32_t)WeaponState::WeaponState_ToggleFlashlight,
+ (uint32_t)WeaponState::Value_17,
+ (uint32_t)WeaponState::Value_18,
+ (uint32_t)WeaponState::Value_19,
+ (uint32_t)WeaponState::Value_20,
+ (uint32_t)WeaponState::Value_21
+};
+```
+
 
 ---
 
